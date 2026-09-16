@@ -16,8 +16,8 @@ public class Empleado extends persona{
 	}
 	
 
-	public Empleado(String nombre, String apellido, String correo, long identificacion) {
-		super(nombre, apellido, correo, identificacion);
+	public Empleado() {
+		
 	}
 
 
