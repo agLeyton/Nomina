@@ -16,6 +16,6 @@ public class pruebaBean implements Serializable {
 
 	
 	public String mensaje() {
-		return "hola";
+		return "Calculo de Nomina para empleado";
 	}
 }
