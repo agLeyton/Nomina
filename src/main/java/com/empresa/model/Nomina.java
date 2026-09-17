@@ -8,12 +8,12 @@ public class Nomina {
 	public double salarioNeto;
 	public double salarioDeve;
 	public double pension;
-	
+	public double netoPagar;
 	
 	
 
 	public Nomina(double auxTransporte, double dctoSalud, double dcto, double salarioNeto, double salarioDeve,
-			double pension) {
+			double pension,double netoPagar) {
 		super();
 		this.auxTransporte = auxTransporte;
 		this.dctoSalud = dctoSalud;
@@ -21,6 +21,7 @@ public class Nomina {
 		this.salarioNeto = salarioNeto;
 		this.salarioDeve = salarioDeve;
 		this.pension = pension;
+		this.netoPagar=netoPagar;
 	}
 
 	public double getSalarioDeve() {
@@ -74,6 +75,15 @@ public class Nomina {
 	public void setSalarioNeto(double salarioNeto) {
 		this.salarioNeto = salarioNeto;
 	}
+
+	public double getNetoPagar() {
+		return netoPagar;
+	}
+
+	public void setNetoPagar(double netoPagar) {
+		this.netoPagar = netoPagar;
+	}
+	
 	
 	
 	

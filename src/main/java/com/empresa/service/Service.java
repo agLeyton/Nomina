@@ -24,14 +24,26 @@ public class Service {
 	
 	
 	
-	public double calcularNomina() {
+	public Nomina calcularNomina() {
 		
 	double salarioDiario=objNomina.getSalarioNeto() /30;
+	double aux =0;
 	
 	objNomina.setSalarioDeve(salarioDiario * objEmpl.getDiasTrabajados());
 		
-		return 0;
+	
+	if(objNomina.getSalarioNeto()<=(2*1500000)){
+		objNomina.setAuxTransporte((250000/30)*objEmpl.getDiasTrabajados());
+	}else {
+		objNomina.setAuxTransporte(0);
+
+	}
+	
+	objNomina.setDctoSalud(objNomina.getSalarioDeve()* 0.04);
+	objNomina.setPension(objNomina.getSalarioDeve()*0.04);
+	objNomina.setNetoPagar(objNomina.getSalarioDeve()-objNomina.getDctoSalud()-objNomina.getPension()+objNomina.getAuxTransporte());
 		
+	return objNomina;
 	}
 	
 	
