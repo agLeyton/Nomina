@@ -23,5 +23,17 @@ public class Service {
 	
 	
 	
+	
+	public double calcularNomina() {
+		
+	double salarioDiario=objNomina.getSalarioNeto() /30;
+	
+	objNomina.setSalarioDeve(salarioDiario * objEmpl.getDiasTrabajados());
+		
+		return 0;
+		
+	}
+	
+	
 
 }
