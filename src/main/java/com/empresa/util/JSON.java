@@ -12,8 +12,14 @@ public class JSON {
 	
 	
 	public void cargarDatos(Empleado objEmpleado , Nomina objNomina) {
-		jsonFinal.add("empleado", gson.toJsonTree(objEmpleado));
-		jsonFinal.add("nomina", gson.toJsonTree(objNomina));
+		
+        String jsonString = gson.toJson(objEmpleado);
+        System.out.println(jsonString);
+		
+        String json = gson.toJson(objNomina);
+        System.out.println(json);
+		 // jsonFinal.add("empleado", gson.toJsonTree(objEmpleado));
+		//jsonFinal.add("nomina", gson.toJsonTree(objNomina));
 		
 	}
 	
