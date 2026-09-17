@@ -10,5 +10,33 @@
 
 <h1>#{bean.mensaje()}</h1>
 
+    <h:form>
+
+    <h:outputLabel value="Nombre:" />
+    <h:inputText value="#{nominaB.objService.objEmpl.setnombre}" />
+	<br />
+    <h:outputLabel value="Apellido:" />
+    <h:inputText value="#{nominaB.objService.objEmpl.setapellido}" />
+	<br />
+    <h:outputLabel value="Correo:" />
+    <h:inputText value="#{nominaB.objService.objEmpl.setcorreo}" />
+	<br />
+    <h:outputLabel value="Identificacion:" />
+    <h:inputText value="#{nominaB.objService.objEmpl.setidentificacion}" />
+	<br />
+	<h:outputLabel value="Cargo:" />
+    <h:inputText value="#{nominaB.objService.objEmpl.setcargo}" />
+	<br />
+	<h:outputLabel value="Salario:" />
+    <h:inputText value="#{nominaB.objService.objEmpl.setsalario}" />
+	<br />
+	<h:outputLabel value="Dias trabajados:" />
+    <h:inputText value="#{nominaB.objService.objEmpl.setdiasTrabajados}" />
+	<br />
+	
+    
+
+</h:form>
+
 </body>
 </html>
