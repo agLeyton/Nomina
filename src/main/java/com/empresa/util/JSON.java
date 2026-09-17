@@ -7,6 +7,7 @@ import java.util.List;
 
 import com.empresa.model.Empleado;
 import com.empresa.model.Nomina;
+import com.fasterxml.jackson.core.exc.StreamReadException;
 import com.fasterxml.jackson.core.exc.StreamWriteException;
 import com.fasterxml.jackson.databind.DatabindException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -27,8 +28,9 @@ public class JSON {
 	
 	
 	
-	public static <T> List <T> leerDatos(Class<T>class1 ) {
+	public static <T> List <T> leerDatos(Class<T>class1 ) throws StreamReadException, DatabindException, IOException {
 		
+		List <T> list = new ArrayList<T>();
 		
 		
 		  try {
@@ -45,7 +47,8 @@ public class JSON {
 		
 		
 	}
-		  
+		
+		  return  null;
 	}
 	
 	
