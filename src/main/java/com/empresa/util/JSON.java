@@ -1,33 +1,52 @@
 package com.empresa.util;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import com.empresa.model.Empleado;
 import com.empresa.model.Nomina;
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
+import com.fasterxml.jackson.core.exc.StreamWriteException;
+import com.fasterxml.jackson.databind.DatabindException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 
 public class JSON {
-	Gson gson = new Gson();
-	JsonObject jsonFinal = new JsonObject();
 	
-	ArrayList<> lista= new ArrayList<E>();
-	
-	
-	public void cargarDatos() {
-		
-        String jsonString = gson.toJson(objEmpleado);
-        System.out.println(jsonString);
-		
-        String json = gson.toJson(objNomina);
-        System.out.println(json);
-		 // jsonFinal.add("empleado", gson.toJsonTree(objEmpleado));
-		//jsonFinal.add("nomina", gson.toJsonTree(objNomina));
+	 
+	public void cargarDatos(Empleado obje) {
+		  try {
+				 ObjectMapper mapeador= new ObjectMapper();
+				 mapeador.writeValue(new File("datos.json"), obje);
+				 
+				   } catch (Exception e) {
+					   
+					   
+					   
+				   }
+					
 		
 	}
 	
 	
-	public void 
+	public void  leerDatos() {
+		
+		  try {
+		      ObjectMapper mapeador= new ObjectMapper();
+		     // Empleado persona= mapeador.readValue(new File("datos.json"),Persona.class);
+		    
+		   //   System.out.println(persona.getNombre());
+		     // System.out.println(persona.getApellido());
+		      //System.out.println(persona.getIdentificacion());
+		      
+		      
+		      
+		    } catch (StreamWriteException e) {
+		
+		
+	}
+		  
+	}
 	
 
 }

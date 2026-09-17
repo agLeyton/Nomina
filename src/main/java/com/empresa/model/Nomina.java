@@ -85,6 +85,14 @@ public class Nomina {
 	public void setNetoPagar(double netoPagar) {
 		this.netoPagar = netoPagar;
 	}
+
+	public ArrayList<Nomina> getListNomina() {
+		return listNomina;
+	}
+
+	public void setListNomina(ArrayList<Nomina> listNomina) {
+		this.listNomina = listNomina;
+	}
 	
 	
 	
