@@ -1,14 +1,22 @@
 package com.empresa.service;
 
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import com.empresa.model.Empleado;
 import com.empresa.model.Nomina;
 import com.empresa.util.JSON;
+import com.fasterxml.jackson.core.exc.StreamWriteException;
+import com.fasterxml.jackson.databind.DatabindException;
 
 public class Service {
 	
 	public Empleado objEmpl = new Empleado();
 	public Nomina objNomina = new Nomina();
-	JSON json = new JSON ();
+
 	public Empleado getObjEmpl() {
 		return objEmpl;
 	}
@@ -26,6 +34,8 @@ public class Service {
 	
 	
 	
+
+
 	public Nomina calcularNomina() {
 		
 	double salarioDiario=objNomina.getSalarioNeto() /30;
@@ -48,12 +58,27 @@ public class Service {
 	return objNomina;
 	}
 	
-	public void enviarDatosJson() {
+	public void enviarDatosJson() throws StreamWriteException, DatabindException, IOException {
 		
-	//	json.cargarDatos(objEmpl, objNomina);
+	    List<Map<String, Object>> datos = new ArrayList<>();
+
+	
+	for (int i =0; i< objEmpl.getListEmpl().size(); i++) {
+		
+		 Map<String, Object> objeto = new HashMap<>();
+
+	        objeto.put("empleado", objEmpl.getListEmpl().get(i));
+	        objeto.put("nomina", objNomina.getListNomina().get(i));
+
+	        datos.add(objeto);
+		
+	}
+		
+		JSON.cargarDatos(datos);
 		
 		
-	//}
+		
+	}
 	
 
 	public void agregarEmpleado(Empleado objE) {

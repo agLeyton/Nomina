@@ -3,6 +3,7 @@ package com.empresa.util;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import com.empresa.model.Empleado;
 import com.empresa.model.Nomina;
@@ -13,31 +14,30 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class JSON {
 	
+	 public static ObjectMapper mapeador= new ObjectMapper();
+	// public static String rutaArchivo;
 	 
-	public void cargarDatos(Empleado obje) {
-		  try {
-				 ObjectMapper mapeador= new ObjectMapper();
-				 mapeador.writeValue(new File("datos.json"), obje);
-				 
-				   } catch (Exception e) {
-					   
-					   
-					   
-				   }
+	public static <T> void  cargarDatos( List <T> obje ) throws StreamWriteException, DatabindException, IOException {
+			
+	mapeador.writeValue(new File("datos.json"), obje);
 					
-		
 	}
 	
 	
-	public void  leerDatos() {
+	
+	
+	
+	public static <T> List <T> leerDatos(Class<T>class1 ) {
+		
+		
 		
 		  try {
 		      ObjectMapper mapeador= new ObjectMapper();
-		     // Empleado persona= mapeador.readValue(new File("datos.json"),Persona.class);
+		      Empleado persona= mapeador.readValue(new File("datos.json"),Empleado.class);
 		    
-		   //   System.out.println(persona.getNombre());
-		     // System.out.println(persona.getApellido());
-		      //System.out.println(persona.getIdentificacion());
+		    System.out.println(persona.getNombre());
+		     System.out.println(persona.getApellido());
+		      System.out.println(persona.getIdentificacion());
 		      
 		      
 		      
@@ -48,5 +48,7 @@ public class JSON {
 		  
 	}
 	
-
+	
 }
+
+
