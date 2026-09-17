@@ -11,7 +11,7 @@ import jakarta.inject.Named;
 @SessionScoped
 public class nominaB  implements Serializable{
 
-	public Service objService = new Service();
+	private Service objService = new Service();
 	private static final long serialVersionUID = -5095101345913377387L;
 	
 	

@@ -5,6 +5,12 @@
          version="6.0">
 
     <display-name>CasallasLeyton</display-name>
+	
+	<listener>
+        <listener-class>
+            org.jboss.weld.environment.servlet.Listener
+        </listener-class>
+    </listener>
 
     <!-- Página de inicio predeterminada -->
     <welcome-file-list>
