@@ -2,11 +2,13 @@ package com.empresa.service;
 
 import com.empresa.model.Empleado;
 import com.empresa.model.Nomina;
+import com.empresa.util.JSON;
 
 public class Service {
 	
 	public Empleado objEmpl = new Empleado();
 	public Nomina objNomina = new Nomina();
+	JSON json = new JSON ();
 	public Empleado getObjEmpl() {
 		return objEmpl;
 	}
@@ -27,7 +29,7 @@ public class Service {
 	public Nomina calcularNomina() {
 		
 	double salarioDiario=objNomina.getSalarioNeto() /30;
-	double aux =0;
+	
 	
 	objNomina.setSalarioDeve(salarioDiario * objEmpl.getDiasTrabajados());
 		
@@ -46,6 +48,14 @@ public class Service {
 	return objNomina;
 	}
 	
+	public void enviarDatosJson() {
+		
+		json.cargarDatos(objEmpl, objNomina);
+		
+	}
+	
+	
+}
 	
 
-}
+
