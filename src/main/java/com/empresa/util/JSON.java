@@ -1,5 +1,7 @@
 package com.empresa.util;
 
+import java.util.ArrayList;
+
 import com.empresa.model.Empleado;
 import com.empresa.model.Nomina;
 import com.google.gson.Gson;
@@ -9,9 +11,10 @@ public class JSON {
 	Gson gson = new Gson();
 	JsonObject jsonFinal = new JsonObject();
 	
+	ArrayList<> lista= new ArrayList<E>();
 	
 	
-	public void cargarDatos(Empleado objEmpleado , Nomina objNomina) {
+	public void cargarDatos() {
 		
         String jsonString = gson.toJson(objEmpleado);
         System.out.println(jsonString);
@@ -22,6 +25,9 @@ public class JSON {
 		//jsonFinal.add("nomina", gson.toJsonTree(objNomina));
 		
 	}
+	
+	
+	public void 
 	
 
 }

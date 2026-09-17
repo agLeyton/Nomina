@@ -1,5 +1,7 @@
 package com.empresa.model;
 
+import java.util.ArrayList;
+
 public class Nomina {
 
 	public double auxTransporte;
@@ -9,7 +11,7 @@ public class Nomina {
 	public double salarioDeve;
 	public double pension;
 	public double netoPagar;
-	
+	ArrayList<Nomina>listNomina = new ArrayList<Nomina>();
 	
 
 	public Nomina(double auxTransporte, double dctoSalud, double dcto, double salarioNeto, double salarioDeve,

@@ -48,12 +48,17 @@ public class Service {
 	return objNomina;
 	}
 	
-	public void enviarDatosJson() {
+	//public void enviarDatosJson() {
 		
-		json.cargarDatos(objEmpl, objNomina);
+	//	json.cargarDatos(objEmpl, objNomina);
 		
-	}
+		
+	//}
 	
+
+	public void agregarEmpleado(Empleado objE) {
+		objEmpl.getListEmpl().add(objE);
+	}
 	
 }
 	
