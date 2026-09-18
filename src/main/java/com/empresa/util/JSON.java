@@ -16,7 +16,7 @@ public class JSON {
 
 	public static ObjectMapper mapeador = new ObjectMapper();
 
-	String ruta = System.getProperty("user.home") + "\\Downloads\\datos.json";
+	static String ruta = System.getProperty("user.home") + "\\Downloads\\datos.json";
 
 	static File archivo = new File(ruta);
 	
