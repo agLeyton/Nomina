@@ -13,6 +13,9 @@ import com.fasterxml.jackson.core.exc.StreamReadException;
 import com.fasterxml.jackson.core.exc.StreamWriteException;
 import com.fasterxml.jackson.databind.DatabindException;
 
+import jakarta.faces.application.FacesMessage;
+import jakarta.faces.context.FacesContext;
+
 public class Service {
 	
 	public Empleado objEmpl ; 
@@ -91,10 +94,18 @@ public class Service {
 	    System.out.println("entro a calculaN");
 	    System.out.println("objE: " + objE.getNombre() + " - " + objE.getSalario());
 	    
-	    
-	  
-	    
+	    boolean band = false;
 
+	    for (Empleado emple : listEmpl) {
+
+	        if (emple.getIdentificacion()== objE.getIdentificacion()) {
+	            band = true;
+	            break;
+	        }
+	    }
+	    
+	    if(band==false) {
+	    	
 		    Empleado empleadoAGuardar = new Empleado();
 		    empleadoAGuardar.setNombre(objE.getNombre());
 		    empleadoAGuardar.setApellido(objE.getApellido());
@@ -129,7 +140,16 @@ public class Service {
 		    agregarEmpleadoYNomina(empleadoAGuardar, nuevaNomina);
 	    	
 	    
-
+	    }else {
+	    	
+	    	   FacesContext.getCurrentInstance().addMessage(null,
+	                   new FacesMessage(
+	                       FacesMessage.SEVERITY_ERROR,
+	                       "Error",
+	                       "No se puede agregar: la identificación ya existe."
+	                   )
+	               );
+	    }
 	    
 	}
 	
