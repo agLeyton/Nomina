@@ -1,139 +1,240 @@
 <?xml version="1.0" encoding="UTF-8" ?>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="jakarta.faces.html"
 	xmlns:p="http://primefaces.org/ui" xmlns:f="jakarta.faces.core">
+
 <h:head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Insert title here</title>
 
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
-    <style>
+	<title>Registro Nomina</title>
 
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-            background-color: #f4f6f8;
-        }
+	<style>
 
-        h1 {
-            text-align: center;
-            color: #2c3e50;
-            margin-top: 35px;
-            margin-bottom: 25px;
-        }
+		body {
+			margin: 0;
+			padding: 0;
+			font-family: Arial, sans-serif;
+			background-color: #f4f6f8;
+		}
 
-        form {
-            width: 500px;
-            margin: 0 auto 40px auto;
-            padding: 30px;
-            background-color: white;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
-        }
+		h1 {
+			text-align: center;
+			color: #2c3e50;
+			margin-top: 35px;
+			margin-bottom: 25px;
+		}
 
-        form > div {
-            display: flex;
-            align-items: center;
-            margin-bottom: 18px;
-        }
+		/* MENÚ */
+		.card {
+			width: 90%;
+			max-width: 1100px;
+			margin: 25px auto;
+		}
 
-        form > div label {
-            width: 150px;
-            font-weight: bold;
-            color: #34495e;
-        }
+		/* FORMULARIO */
+		form {
+			width: 500px;
+			margin: 0 auto 40px auto;
+			padding: 30px;
+			background-color: white;
+			border-radius: 12px;
+			box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
+			box-sizing: border-box;
+		}
 
-        form > div input {
-            flex: 1;
-        }
+		/* CAMPOS */
+		form > div {
+			display: flex;
+			align-items: center;
+			margin-bottom: 18px;
+		}
 
-        .ui-inputfield {
-            width: 100%;
-            box-sizing: border-box;
-            padding: 10px;
-            border-radius: 6px;
-        }
+		form > div label {
+			width: 150px;
+			font-weight: bold;
+			color: #34495e;
+		}
 
-        .ui-inputfield:focus {
-            border-color: #3498db;
-            box-shadow: 0 0 4px rgba(52, 152, 219, 0.4);
-        }
+		form > div input {
+			flex: 1;
+		}
 
-        .ui-button,
-        button {
-            width: 100%;
-            padding: 11px;
-            margin-top: 10px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 15px;
-        }
+		/* INPUTS PRIMEFACES */
+		.ui-inputfield {
+			width: 100%;
+			box-sizing: border-box;
+			padding: 10px;
+			border-radius: 6px;
+		}
 
-    </style>
+		.ui-inputfield:focus {
+			border-color: #3498db;
+			box-shadow: 0 0 4px rgba(52, 152, 219, 0.4);
+		}
+
+		/* BOTONES */
+		.btn {
+			width: 100%;
+			padding: 11px;
+			margin-top: 10px;
+			border-radius: 6px;
+			cursor: pointer;
+			font-size: 15px;
+			font-weight: bold;
+			box-sizing: border-box;
+		}
+
+		/* ACEPTAR */
+		.btn-outline-success {
+			background-color: #198754;
+			color: white;
+			border: 1px solid #198754;
+		}
+
+		.btn-outline-success:hover {
+			background-color: #157347;
+		}
+
+		/* LIMPIAR */
+		.btn-outline-secondary {
+			background-color: #6c757d;
+			color: white;
+			border: 1px solid #6c757d;
+		}
+
+		.btn-outline-secondary:hover {
+			background-color: #5c636a;
+		}
+
+	</style>
+
 </h:head>
+
 <h:body>
 
-<h1>#{bean.mensaje()}</h1>
+	<h1>#{bean.mensaje()}</h1>
 
-   	
 
- <h:form>
-	<div>
-		<p:outputLabel for="nombre" value="Nombre:" />
-	    <p:inputText id="nombre" value="#{nominaB.objService.objEmpl.nombre}" />
-		
+	<div class="card">
+
+		<p:tabMenu>
+
+			<p:menuitem value="Inicio" outcome="/index"
+				icon="pi pi-fw pi-home" />
+
+			<p:menuitem value="Nómina" outcome="nomina"
+				icon="pi pi-fw pi-calendar" />
+
+			<p:menuitem value="Nómina Empleado" outcome="nominaEmpleado"
+				icon="pi pi-fw pi-pencil" />
+
+		</p:tabMenu>
+
 	</div>
-	
-    <div>
-     <p:outputLabel for="apellido" value="Apellido:" />
-    <p:inputText  id ="apellido" value="#{nominaB.objService.objEmpl.apellido}" />
-    </div>
-   <div>
-   	 <p:outputLabel  for ="correo" value="Correo:" />
-    <p:inputText type="email" id="correo" value="#{nominaB.objService.objEmpl.correo}"/>
-   </div>
-   
-   <div>
-   	<p:outputLabel for="id" value="Identificacion:" />
-    <p:inputText type ="number" id="id" value="#{nominaB.objService.objEmpl.identificacion}"/>
-   
-   </div>
-    
-	<div>
-	
-	<p:outputLabel for="cargo" value="Cargo:" />
-    <p:inputText  id="cargo" value="#{nominaB.objService.objEmpl.cargo}"/>
-	</div>
-	
-	<div>
-		<p:outputLabel for="salario" value="Salario:" />
-    <p:inputText type="number" id="salario" value="#{nominaB.objService.objEmpl.salario}"/>
-	</div>
-	
-	<div>
-	<h:outputLabel for="diasT" value="Dias trabajados:" />
-    <h:inputText type ="number" id="diasT" value="#{nominaB.objService.objEmpl.diasTrabajados}" />
-	</div>
-	
-	<div>
-	<h:commandButton value="Aceptar" 
-                      styleClass="btn btn-primary" 
-                      action="#{nominaB.objService.calcularNomina(nominaB.objService.objEmpl)}"/>
-    
-	</div>
-	
-	<div>
-    <h:commandButton value="Limpiar"
-                     type="reset" />
-</div>
-	 
-
-</h:form>
-   	
 
 
+	<h:form>
 
+		<div>
+
+			<p:outputLabel for="nombre" value="Nombre:" />
+
+			<p:inputText id="nombre"
+				value="#{nominaB.objService.objEmpl.nombre}" required="true"
+						requiredMessage="Ingrese el Nombre" />
+
+		</div>
+
+
+		<div>
+
+			<p:outputLabel for="apellido" value="Apellido:" />
+
+			<p:inputText id="apellido"
+				value="#{nominaB.objService.objEmpl.apellido}" required="true"
+						requiredMessage="Ingrese el apellido" />
+
+		</div>
+
+
+		<div>
+
+			<p:outputLabel for="correo" value="Correo:" />
+
+			<p:inputText type="email" id="correo"
+				value="#{nominaB.objService.objEmpl.correo}" required="true"
+						requiredMessage="Ingrese el correo" />
+
+		</div>
+
+
+		<div>
+
+			<p:outputLabel for="id" value="Identificacion:" />
+
+			<p:inputText type="number" id="id" min="1"
+				value="#{nominaB.objService.objEmpl.identificacion}"  required="true"
+						requiredMessage="Ingrese la identificación"/>
+
+		</div>
+
+
+		<div>
+
+			<p:outputLabel for="cargo" value="Cargo:" />
+
+			<p:inputText id="cargo"
+				value="#{nominaB.objService.objEmpl.cargo}" required="true"
+						requiredMessage="Ingrese el cargo" />
+
+		</div>
+
+
+		<div>
+
+			<p:outputLabel for="salario" value="Salario:" />
+
+			<p:inputText type="number" id="salario"
+				value="#{nominaB.objService.objEmpl.salario}" required="true"
+						requiredMessage="Ingrese el salario" />
+
+		</div>
+
+
+		<div>
+
+			<p:outputLabel for="diasT" value="Dias trabajados:" />
+
+			<p:inputText type="number" id="diasT" min="1" max="30"	
+			value="#{nominaB.objService.objEmpl.diasTrabajados}" required="true"
+						requiredMessage="Dias trabajados de 1 a 30"/>
+
+		</div>
+
+
+		<div>
+
+			<h:commandButton value="Aceptar"
+				class="btn btn-outline-success"
+				action="#{nominaB.objService.calcularNomina(nominaB.objService.objEmpl)}" />
+
+		</div>
+
+
+		<div>
+
+			<h:commandButton value="Limpiar"
+				class="btn btn-outline-secondary"
+				type="reset" />
+
+		</div>
+
+	</h:form>
 
 </h:body>
+
 </html>
+

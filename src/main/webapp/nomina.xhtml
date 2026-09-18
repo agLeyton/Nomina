@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="jakarta.faces.html"
+	xmlns:p="http://primefaces.org/ui" xmlns:f="jakarta.faces.core">
+
+<h:head>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+	<title>Nomina</title>
+
+	<style>
+
+		body {
+			margin: 0;
+			padding: 0;
+			font-family: Arial, sans-serif;
+			background-color: #f4f6f8;
+		}
+
+		/* MENÚ */
+		.card {
+			width: 90%;
+			max-width: 1200px;
+			margin: 25px auto;
+		}
+
+		/* FORMULARIO DEL BOTÓN */
+		form:first-of-type {
+			width: 90%;
+			max-width: 1200px;
+			margin: 0 auto 25px auto;
+		}
+
+		/* BOTÓN RECARGAR */
+		form:first-of-type input[type="submit"] {
+			display: block;
+			margin: 0 auto;
+			padding: 11px 30px;
+			background-color: #3498db;
+			color: white;
+			border: none;
+			border-radius: 7px;
+			font-size: 15px;
+			font-weight: bold;
+			cursor: pointer;
+			transition: 0.3s;
+		}
+
+		form:first-of-type input[type="submit"]:hover {
+			background-color: #2980b9;
+			transform: translateY(-1px);
+		}
+
+		/* CONTENEDOR DE LA TABLA */
+		form:last-of-type .card {
+			background-color: white;
+			padding: 25px;
+			border-radius: 12px;
+			box-shadow: 0 4px 15px rgba(0, 0, 0, 0.10);
+			box-sizing: border-box;
+			overflow-x: auto;
+		}
+
+		/* TABLA PRIMEFACES */
+		.ui-datatable {
+			width: 100%;
+			border-radius: 8px;
+			overflow: hidden;
+		}
+
+		.ui-datatable thead th {
+			padding: 14px 12px;
+			font-weight: bold;
+			text-align: center;
+		}
+
+		.ui-datatable tbody td {
+			padding: 13px 12px;
+			text-align: center;
+		}
+
+		/* TEXTO DE LA TABLA */
+		.ui-datatable tbody td .ui-outputtext {
+			font-size: 14px;
+		}
+
+	</style>
+
+</h:head>
+
+<h:body>
+
+
+	<div class="card">
+
+		<p:tabMenu>
+
+			<p:menuitem value="Inicio" outcome="/index"
+				icon="pi pi-fw pi-home" />
+
+			<p:menuitem value="Nómina" outcome="nomina"
+				icon="pi pi-fw pi-calendar" />
+
+			<p:menuitem value="Nómina Empleado" outcome="nominaEmpleado"
+				icon="pi pi-fw pi-pencil" />
+
+		</p:tabMenu>
+
+	</div>
+
+
+	<h:form>
+
+		<h:commandButton value="Recargar" action="#{nominaB.cargar()}" />
+
+	</h:form>
+
+
+
+	<h:form>
+
+		<div class="card">
+
+			<p:dataTable var="r" value="#{nominaB.registros}">
+
+				<p:column headerText="Identificación">
+
+					<h:outputText value="#{r.empleado.identificacion}" />
+
+				</p:column>
+
+
+				<p:column headerText="Nombre">
+
+					<h:outputText value="#{r.empleado.nombre}" />
+
+				</p:column>
+
+
+				<p:column headerText="Apellido">
+
+					<h:outputText value="#{r.empleado.apellido}" />
+
+				</p:column>
+
+
+				<p:column headerText="cargo">
+
+					<h:outputText value="#{r.empleado.cargo}" />
+
+				</p:column>
+
+
+				<p:column headerText="Correo">
+
+					<h:outputText value="#{r.empleado.correo}" />
+
+				</p:column>
+
+
+				<p:column headerText="Neto a Pagar">
+
+					<h:outputText value="#{r.nomina.netoPagar}" />
+
+				</p:column>
+
+			</p:dataTable>
+
+		</div>
+
+	</h:form>
+
+
+</h:body>
+
+</html>

@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import com.empresa.model.Empleado;
 import com.fasterxml.jackson.core.exc.StreamReadException;
@@ -11,40 +12,39 @@ import com.fasterxml.jackson.core.exc.StreamWriteException;
 import com.fasterxml.jackson.databind.DatabindException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-
 public class JSON {
 
-    public static ObjectMapper mapeador = new ObjectMapper();
-    // public static String rutaArchivo;
+	public static ObjectMapper mapeador = new ObjectMapper();
 
-    public static <T> void cargarDatos(List<T> obje)
-            throws StreamWriteException, DatabindException, IOException {
+	String ruta = System.getProperty("user.home") + "\\Downloads\\datos.json";
 
-        String json = mapeador.writerWithDefaultPrettyPrinter().writeValueAsString(obje);
-        System.out.println("=== JSON que se va a escribir ===");
-        System.out.println(json);
-        System.out.println("=================================");
+	File archivo = new File(ruta);
+	
 
-        mapeador.writeValue(new File("C:\\Users\\Asus\\Downloads\\datos.json"), obje);
-    }
+	public static <T> void cargarDatos(List<T> obje) throws StreamWriteException, DatabindException, IOException {
 
-    public static <T> List<T> leerDatos(Class<T> class1)
-            throws StreamReadException, DatabindException, IOException {
+		String json = mapeador.writerWithDefaultPrettyPrinter().writeValueAsString(obje);
+	
+		System.out.println(json);
+		
 
-        List<T> list = new ArrayList<T>();
+		mapeador.writeValue(new File("C:\\Users\\Asus\\Downloads\\datos.json"), obje);
+	}
 
-        try {
-            ObjectMapper mapeador = new ObjectMapper();
-            Empleado persona = mapeador.readValue(new File("datos.json"), Empleado.class);
+	
+	public static List<Map<String, Object>> leerDatos() throws StreamReadException, DatabindException, IOException {
 
-            System.out.println(persona.getNombre());
-            System.out.println(persona.getApellido());
-            System.out.println(persona.getIdentificacion());
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+	    File archivo = new File("C:\\Users\\Asus\\Downloads\\datos.json");
+	    if (!archivo.exists()) {
+	        System.out.println("El archivo no existe: " + archivo.getAbsolutePath());
+	        return new ArrayList<>();
+	    }
 
-        return null;
-    }
+	    return mapeador.readValue(
+	        archivo,
+	        mapeador.getTypeFactory().constructCollectionType(List.class, Map.class)
+	    );
+		
+	}
 }

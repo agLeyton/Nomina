@@ -9,6 +9,7 @@ import java.util.Map;
 import com.empresa.model.Empleado;
 import com.empresa.model.Nomina;
 import com.empresa.util.JSON;
+import com.fasterxml.jackson.core.exc.StreamReadException;
 import com.fasterxml.jackson.core.exc.StreamWriteException;
 import com.fasterxml.jackson.databind.DatabindException;
 
@@ -16,6 +17,7 @@ public class Service {
 	
 	public Empleado objEmpl ; 
 	public Nomina objNomina ;
+	public   Nomina nuevaNomina;
 	public ArrayList<Empleado> listEmpl= new ArrayList<Empleado>();
 	ArrayList<Nomina>listNomina = new ArrayList<Nomina>();
 	
@@ -28,9 +30,6 @@ public class Service {
 	}
 
 	
-	
-
-
 
 
 	public Empleado getObjEmpl() {
@@ -50,6 +49,27 @@ public class Service {
 	public ArrayList<Empleado> getListEmpl() {
 		return listEmpl;
 	}
+
+
+
+
+
+
+
+	public Nomina getNuevaNomina() {
+		return nuevaNomina;
+	}
+
+
+
+	public void setNuevaNomina(Nomina nuevaNomina) {
+		this.nuevaNomina = nuevaNomina;
+	}
+
+
+
+
+
 
 
 	public void setListEmpl(ArrayList<Empleado> listEmpl) {
@@ -82,7 +102,7 @@ public class Service {
 	    empleadoAGuardar.setCargo(objE.getCargo());
 
 	    // Nómina NUEVA para este cálculo
-	    Nomina nuevaNomina = new Nomina();
+	   nuevaNomina = new Nomina();
 
 	    double salarioDiario = objE.getSalario() / 30;
 
@@ -129,6 +149,22 @@ public class Service {
 		JSON.cargarDatos(datos);	
 	}
 	
+	
+	public void leerDatos() throws StreamReadException, DatabindException, IOException {
+		
+		List<Map<String, Object>> registros = JSON.leerDatos();
+		
+		for (Map<String, Object> registro : registros) {
+
+		    // Extraer el sub-mapa "empleado"
+		    Map<String, Object> empleado = (Map<String, Object>) registro.get("empleado");
+
+		    // Extraer el sub-mapa "nomina"
+		    Map<String, Object> nomina = (Map<String, Object>) registro.get("nomina");
+		}
+		
+		
+	}
 
 	public void agregarEmpleadoYNomina(Empleado objE, Nomina objN) throws StreamWriteException, DatabindException, IOException {
 		System.out.println("entro a agregar");
