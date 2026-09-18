@@ -136,7 +136,16 @@ public class Service {
 		        - nuevaNomina.getPension()
 		        + nuevaNomina.getAuxTransporte()
 		    );
-
+		    
+		  	 FacesContext.getCurrentInstance().addMessage(
+	    		        null,
+	    		        new FacesMessage(
+	    		            FacesMessage.SEVERITY_INFO,
+	    		            "Éxito",
+	    		            " Nomina realizada correctamente"
+	    		        )
+	    		    );
+		    
 		    agregarEmpleadoYNomina(empleadoAGuardar, nuevaNomina);
 	    	
 	    

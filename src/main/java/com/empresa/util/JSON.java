@@ -18,7 +18,7 @@ public class JSON {
 
 	String ruta = System.getProperty("user.home") + "\\Downloads\\datos.json";
 
-	File archivo = new File(ruta);
+	static File archivo = new File(ruta);
 	
 
 	public static <T> void cargarDatos(List<T> obje) throws StreamWriteException, DatabindException, IOException {
@@ -28,14 +28,14 @@ public class JSON {
 		System.out.println(json);
 		
 
-		mapeador.writeValue(new File("C:\\Users\\Asus\\Downloads\\datos.json"), obje);
+		mapeador.writeValue(archivo, obje);
 	}
 
 	
 	public static List<Map<String, Object>> leerDatos() throws StreamReadException, DatabindException, IOException {
 
 
-	    File archivo = new File("C:\\Users\\Asus\\Downloads\\datos.json");
+	   
 	    if (!archivo.exists()) {
 	        System.out.println("El archivo no existe: " + archivo.getAbsolutePath());
 	        return new ArrayList<>();
