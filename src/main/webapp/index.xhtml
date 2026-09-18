@@ -2,41 +2,138 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="jakarta.faces.html"
 	xmlns:p="http://primefaces.org/ui" xmlns:f="jakarta.faces.core">
-<head>
+<h:head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Insert title here</title>
-</head>
-<body>
+
+
+    <style>
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-top: 35px;
+            margin-bottom: 25px;
+        }
+
+        form {
+            width: 500px;
+            margin: 0 auto 40px auto;
+            padding: 30px;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
+        }
+
+        form > div {
+            display: flex;
+            align-items: center;
+            margin-bottom: 18px;
+        }
+
+        form > div label {
+            width: 150px;
+            font-weight: bold;
+            color: #34495e;
+        }
+
+        form > div input {
+            flex: 1;
+        }
+
+        .ui-inputfield {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 10px;
+            border-radius: 6px;
+        }
+
+        .ui-inputfield:focus {
+            border-color: #3498db;
+            box-shadow: 0 0 4px rgba(52, 152, 219, 0.4);
+        }
+
+        .ui-button,
+        button {
+            width: 100%;
+            padding: 11px;
+            margin-top: 10px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+    </style>
+</h:head>
+<h:body>
 
 <h1>#{bean.mensaje()}</h1>
 
-    <h:form>
+   	
 
-    <h:outputLabel value="Nombre:" />
-    <h:inputText value="#{nominaB.objService.objEmpl.setnombre}" />
-	<br />
-    <h:outputLabel value="Apellido:" />
-    <h:inputText value="#{nominaB.objService.objEmpl.setapellido}" />
-	<br />
-    <h:outputLabel value="Correo:" />
-    <h:inputText value="#{nominaB.objService.objEmpl.setcorreo}" />
-	<br />
-    <h:outputLabel value="Identificacion:" />
-    <h:inputText value="#{nominaB.objService.objEmpl.setidentificacion}" />
-	<br />
-	<h:outputLabel value="Cargo:" />
-    <h:inputText value="#{nominaB.objService.objEmpl.setcargo}" />
-	<br />
-	<h:outputLabel value="Salario:" />
-    <h:inputText value="#{nominaB.objService.objEmpl.setsalario}" />
-	<br />
-	<h:outputLabel value="Dias trabajados:" />
-    <h:inputText value="#{nominaB.objService.objEmpl.setdiasTrabajados}" />
-	<br />
+ <h:form>
+	<div>
+		<p:outputLabel for="nombre" value="Nombre:" />
+	    <p:inputText id="nombre" value="#{nominaB.objService.objEmpl.nombre}" />
+		
+	</div>
 	
+    <div>
+     <p:outputLabel for="apellido" value="Apellido:" />
+    <p:inputText  id ="apellido" value="#{nominaB.objService.objEmpl.apellido}" />
+    </div>
+   <div>
+   	 <p:outputLabel  for ="correo" value="Correo:" />
+    <p:inputText type="email" id="correo" value="#{nominaB.objService.objEmpl.correo}"/>
+   </div>
+   
+   <div>
+   	<p:outputLabel for="id" value="Identificacion:" />
+    <p:inputText type ="number" id="id" value="#{nominaB.objService.objEmpl.identificacion}"/>
+   
+   </div>
     
+	<div>
+	
+	<p:outputLabel for="cargo" value="Cargo:" />
+    <p:inputText  id="cargo" value="#{nominaB.objService.objEmpl.cargo}"/>
+	</div>
+	
+	<div>
+		<p:outputLabel for="salario" value="Salario:" />
+    <p:inputText type="number" id="salario" value="#{nominaB.objService.objEmpl.salario}"/>
+	</div>
+	
+	<div>
+	<h:outputLabel for="diasT" value="Dias trabajados:" />
+    <h:inputText type ="number" id="diasT" value="#{nominaB.objService.objEmpl.diasTrabajados}" />
+	</div>
+	
+	<div>
+	<h:commandButton value="Aceptar" 
+                      styleClass="btn btn-primary" 
+                      action="#{nominaB.objService.calcularNomina(nominaB.objService.objEmpl)}"/>
+    
+	</div>
+	
+	<div>
+    <h:commandButton value="Limpiar"
+                     type="reset" />
+</div>
+	 
 
 </h:form>
+   	
 
-</body>
+
+
+
+</h:body>
 </html>

@@ -14,8 +14,24 @@ import com.fasterxml.jackson.databind.DatabindException;
 
 public class Service {
 	
-	public Empleado objEmpl = new Empleado();
-	public Nomina objNomina = new Nomina();
+	public Empleado objEmpl ; 
+	public Nomina objNomina ;
+	public ArrayList<Empleado> listEmpl= new ArrayList<Empleado>();
+	ArrayList<Nomina>listNomina = new ArrayList<Nomina>();
+	
+	
+
+	public Service() {
+		super();
+		objEmpl = new Empleado();
+		objNomina =  new Nomina();
+	}
+
+	
+	
+
+
+
 
 	public Empleado getObjEmpl() {
 		return objEmpl;
@@ -31,62 +47,95 @@ public class Service {
 		this.objNomina = objNomina;
 	}
 	
-	
-	
-	
+	public ArrayList<Empleado> getListEmpl() {
+		return listEmpl;
+	}
 
 
-	public Nomina calcularNomina() {
-		
-	double salarioDiario=objNomina.getSalarioNeto() /30;
-	
-	
-	objNomina.setSalarioDeve(salarioDiario * objEmpl.getDiasTrabajados());
-		
-	
-	if(objNomina.getSalarioNeto()<=(2*1500000)){
-		objNomina.setAuxTransporte((250000/30)*objEmpl.getDiasTrabajados());
-	}else {
-		objNomina.setAuxTransporte(0);
-
+	public void setListEmpl(ArrayList<Empleado> listEmpl) {
+		this.listEmpl = listEmpl;
 	}
 	
-	objNomina.setDctoSalud(objNomina.getSalarioDeve()* 0.04);
-	objNomina.setPension(objNomina.getSalarioDeve()*0.04);
-	objNomina.setNetoPagar(objNomina.getSalarioDeve()-objNomina.getDctoSalud()-objNomina.getPension()+objNomina.getAuxTransporte());
-		
-	return objNomina;
+	
+	public ArrayList<Nomina> getListNomina() {
+		return listNomina;
 	}
+
+	public void setListNomina(ArrayList<Nomina> listNomina) {
+		this.listNomina = listNomina;
+	}
+
+
+	public void calcularNomina(Empleado objE) throws StreamWriteException, DatabindException, IOException {
+
+	    System.out.println("entro a calculaN");
+	    System.out.println("objE: " + objE.getNombre() + " - " + objE.getSalario());
+
+	    // Copia del empleado que llega por parámetro, para no guardar referencias compartidas
+	    Empleado empleadoAGuardar = new Empleado();
+	    empleadoAGuardar.setNombre(objE.getNombre());
+	    empleadoAGuardar.setApellido(objE.getApellido());
+	    empleadoAGuardar.setCorreo(objE.getCorreo());
+	    empleadoAGuardar.setIdentificacion(objE.getIdentificacion());
+	    empleadoAGuardar.setSalario(objE.getSalario());
+	    empleadoAGuardar.setDiasTrabajados(objE.getDiasTrabajados());
+	    empleadoAGuardar.setCargo(objE.getCargo());
+
+	    // Nómina NUEVA para este cálculo
+	    Nomina nuevaNomina = new Nomina();
+
+	    double salarioDiario = objE.getSalario() / 30;
+
+	    nuevaNomina.setSalarioDeve(salarioDiario * objE.getDiasTrabajados());
+
+	    if (objE.getSalario() <= (2 * 1500000)) {
+	        nuevaNomina.setAuxTransporte((250000.0 / 30) * objE.getDiasTrabajados());
+	    } else {
+	        nuevaNomina.setAuxTransporte(0);
+	    }
+
+	    nuevaNomina.setDctoSalud(nuevaNomina.getSalarioDeve() * 0.04);
+	    nuevaNomina.setPension(nuevaNomina.getSalarioDeve() * 0.04);
+	    nuevaNomina.setNetoPagar(
+	        nuevaNomina.getSalarioDeve()
+	        - nuevaNomina.getDctoSalud()
+	        - nuevaNomina.getPension()
+	        + nuevaNomina.getAuxTransporte()
+	    );
+
+	    agregarEmpleadoYNomina(empleadoAGuardar, nuevaNomina);
+	}
+	
+	
 	
 	public void enviarDatosJson() throws StreamWriteException, DatabindException, IOException {
+		System.out.println("entro a enviar datos");
+
 		
 	    List<Map<String, Object>> datos = new ArrayList<>();
 
 	
-	for (int i =0; i< objEmpl.getListEmpl().size(); i++) {
+	for (int i =0; i< listEmpl.size(); i++) {
 		
 		 Map<String, Object> objeto = new HashMap<>();
 
-	        objeto.put("empleado", objEmpl.getListEmpl().get(i));
-	        objeto.put("nomina", objNomina.getListNomina().get(i));
+	        objeto.put("empleado", listEmpl.get(i));
+	        objeto.put("nomina", listNomina.get(i));
 
 	        datos.add(objeto);
 		
 	}
 		
-		JSON.cargarDatos(datos);
-		
-		
-		
+		JSON.cargarDatos(datos);	
 	}
 	
 
-	public void agregarEmpleado(Empleado objE) {
-		objEmpl.getListEmpl().add(objE);
-	}
-	
-	public void agregarEmpleado(Nomina objN) {
-		objNomina.getListNomina().add(objN);
+	public void agregarEmpleadoYNomina(Empleado objE, Nomina objN) throws StreamWriteException, DatabindException, IOException {
+		System.out.println("entro a agregar");
+
+		listEmpl.add(objE);
+		listNomina.add(objN);
+		enviarDatosJson();
 	}
 	
 }

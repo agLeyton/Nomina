@@ -7,23 +7,28 @@ public class Nomina {
 	public double auxTransporte;
 	public  double dctoSalud;
 	public double dcto;
-	public double salarioNeto;
+
 	public double salarioDeve;
 	public double pension;
 	public double netoPagar;
-	ArrayList<Nomina>listNomina = new ArrayList<Nomina>();
+	
 	
 
-	public Nomina(double auxTransporte, double dctoSalud, double dcto, double salarioNeto, double salarioDeve,
-			double pension,double netoPagar) {
+	
+
+	public Nomina() {
+		super();
+	}
+
+	public Nomina(double auxTransporte, double dctoSalud, double dcto, double salarioDeve, double pension,
+			double netoPagar) {
 		super();
 		this.auxTransporte = auxTransporte;
 		this.dctoSalud = dctoSalud;
 		this.dcto = dcto;
-		this.salarioNeto = salarioNeto;
 		this.salarioDeve = salarioDeve;
 		this.pension = pension;
-		this.netoPagar=netoPagar;
+		this.netoPagar = netoPagar;
 	}
 
 	public double getSalarioDeve() {
@@ -42,9 +47,6 @@ public class Nomina {
 		this.pension = pension;
 	}
 
-	public Nomina() {
-		super();
-	}
 
 	public double getAuxTransporte() {
 		return auxTransporte;
@@ -70,13 +72,6 @@ public class Nomina {
 		this.dcto = dcto;
 	}
 
-	public double getSalarioNeto() {
-		return salarioNeto;
-	}
-
-	public void setSalarioNeto(double salarioNeto) {
-		this.salarioNeto = salarioNeto;
-	}
 
 	public double getNetoPagar() {
 		return netoPagar;
@@ -86,13 +81,7 @@ public class Nomina {
 		this.netoPagar = netoPagar;
 	}
 
-	public ArrayList<Nomina> getListNomina() {
-		return listNomina;
-	}
 
-	public void setListNomina(ArrayList<Nomina> listNomina) {
-		this.listNomina = listNomina;
-	}
 	
 	
 	
