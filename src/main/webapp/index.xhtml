@@ -197,10 +197,19 @@
 
 			<p:outputLabel for="salario" value="Salario:" />
 
-			<p:inputText type="number" id="salario"
-				value="#{nominaB.objService.objEmpl.salario}" required="true"
-						requiredMessage="Ingrese el salario" />
+			<p:selectOneMenu id="salario"
+    value="#{nominaB.objService.objEmpl.salario}">
 
+    <f:selectItem itemLabel="Seleccione un salario" itemValue="" />
+
+    <f:selectItem itemLabel="$1.750.000" itemValue="1750000" />
+    <f:selectItem itemLabel="$2.000.000" itemValue="2000000" />
+    <f:selectItem itemLabel="$2.500.000" itemValue="2500000" />
+    <f:selectItem itemLabel="$3.000.000" itemValue="3000000" />
+    <f:selectItem itemLabel="$4.000.000" itemValue="4000000" />
+    <f:selectItem itemLabel="$5.000.000" itemValue="5000000" />
+
+</p:selectOneMenu>
 		</div>
 
 
@@ -214,18 +223,20 @@
 
 		</div>
 
+		<p:growl id="mensajes" showDetail="true" />
 
 		<div>
 
 			<h:commandButton value="Aceptar"
 				class="btn btn-outline-success"
-				action="#{nominaB.objService.calcularNomina(nominaB.objService.objEmpl)}" />
+				action="#{nominaB.objService.calcularNomina(nominaB.objService.objEmpl)}" 
+				update="mensajes" />
 
 		</div>
 
 
 		<div>
-
+		
 			<h:commandButton value="Limpiar"
 				class="btn btn-outline-secondary"
 				type="reset" />

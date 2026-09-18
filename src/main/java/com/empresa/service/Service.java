@@ -99,7 +99,10 @@ public class Service {
 	    for (Empleado emple : listEmpl) {
 
 	        if (emple.getIdentificacion()== objE.getIdentificacion()) {
+	        	objEmpl=new Empleado();
+	        	nuevaNomina= new Nomina();
 	            band = true;
+	            
 	            break;
 	        }
 	    }
