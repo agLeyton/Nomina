@@ -90,40 +90,47 @@ public class Service {
 
 	    System.out.println("entro a calculaN");
 	    System.out.println("objE: " + objE.getNombre() + " - " + objE.getSalario());
+	    
+	    
+	  
+	    
 
-	    // Copia del empleado que llega por parámetro, para no guardar referencias compartidas
-	    Empleado empleadoAGuardar = new Empleado();
-	    empleadoAGuardar.setNombre(objE.getNombre());
-	    empleadoAGuardar.setApellido(objE.getApellido());
-	    empleadoAGuardar.setCorreo(objE.getCorreo());
-	    empleadoAGuardar.setIdentificacion(objE.getIdentificacion());
-	    empleadoAGuardar.setSalario(objE.getSalario());
-	    empleadoAGuardar.setDiasTrabajados(objE.getDiasTrabajados());
-	    empleadoAGuardar.setCargo(objE.getCargo());
+		    Empleado empleadoAGuardar = new Empleado();
+		    empleadoAGuardar.setNombre(objE.getNombre());
+		    empleadoAGuardar.setApellido(objE.getApellido());
+		    empleadoAGuardar.setCorreo(objE.getCorreo());
+		    empleadoAGuardar.setIdentificacion(objE.getIdentificacion());
+		    empleadoAGuardar.setSalario(objE.getSalario());
+		    empleadoAGuardar.setDiasTrabajados(objE.getDiasTrabajados());
+		    empleadoAGuardar.setCargo(objE.getCargo());
 
-	    // Nómina NUEVA para este cálculo
-	   nuevaNomina = new Nomina();
+		   
+		   nuevaNomina = new Nomina();
 
-	    double salarioDiario = objE.getSalario() / 30;
+		    double salarioDiario = objE.getSalario() / 30;
 
-	    nuevaNomina.setSalarioDeve(salarioDiario * objE.getDiasTrabajados());
+		    nuevaNomina.setSalarioDeve(salarioDiario * objE.getDiasTrabajados());
 
-	    if (objE.getSalario() <= (2 * 1500000)) {
-	        nuevaNomina.setAuxTransporte((250000.0 / 30) * objE.getDiasTrabajados());
-	    } else {
-	        nuevaNomina.setAuxTransporte(0);
-	    }
+		    if (objE.getSalario() <= (2 * 1500000)) {
+		        nuevaNomina.setAuxTransporte((250000.0 / 30) * objE.getDiasTrabajados());
+		    } else {
+		        nuevaNomina.setAuxTransporte(0);
+		    }
 
-	    nuevaNomina.setDctoSalud(nuevaNomina.getSalarioDeve() * 0.04);
-	    nuevaNomina.setPension(nuevaNomina.getSalarioDeve() * 0.04);
-	    nuevaNomina.setNetoPagar(
-	        nuevaNomina.getSalarioDeve()
-	        - nuevaNomina.getDctoSalud()
-	        - nuevaNomina.getPension()
-	        + nuevaNomina.getAuxTransporte()
-	    );
+		    nuevaNomina.setDctoSalud(nuevaNomina.getSalarioDeve() * 0.04);
+		    nuevaNomina.setPension(nuevaNomina.getSalarioDeve() * 0.04);
+		    nuevaNomina.setNetoPagar(
+		        nuevaNomina.getSalarioDeve()
+		        - nuevaNomina.getDctoSalud()
+		        - nuevaNomina.getPension()
+		        + nuevaNomina.getAuxTransporte()
+		    );
 
-	    agregarEmpleadoYNomina(empleadoAGuardar, nuevaNomina);
+		    agregarEmpleadoYNomina(empleadoAGuardar, nuevaNomina);
+	    	
+	    
+
+	    
 	}
 	
 	
