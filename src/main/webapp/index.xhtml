@@ -27,14 +27,14 @@
 			margin-bottom: 25px;
 		}
 
-		/* MENÚ */
+		
 		.card {
 			width: 90%;
 			max-width: 1100px;
 			margin: 25px auto;
 		}
 
-		/* FORMULARIO */
+		
 		form {
 			width: 500px;
 			margin: 0 auto 40px auto;
@@ -45,7 +45,7 @@
 			box-sizing: border-box;
 		}
 
-		/* CAMPOS */
+		
 		form > div {
 			display: flex;
 			align-items: center;
@@ -62,7 +62,7 @@
 			flex: 1;
 		}
 
-		/* INPUTS PRIMEFACES */
+		
 		.ui-inputfield {
 			width: 100%;
 			box-sizing: border-box;
@@ -75,7 +75,7 @@
 			box-shadow: 0 0 4px rgba(52, 152, 219, 0.4);
 		}
 
-		/* BOTONES */
+	
 		.btn {
 			width: 100%;
 			padding: 11px;
@@ -87,7 +87,6 @@
 			box-sizing: border-box;
 		}
 
-		/* ACEPTAR */
 		.btn-outline-success {
 			background-color: #198754;
 			color: white;
@@ -98,7 +97,7 @@
 			background-color: #157347;
 		}
 
-		/* LIMPIAR */
+	
 		.btn-outline-secondary {
 			background-color: #6c757d;
 			color: white;
@@ -198,7 +197,7 @@
 			<p:outputLabel for="salario" value="Salario:" />
 
 			<p:selectOneMenu id="salario"
-    value="#{nominaB.objService.objEmpl.salario}">
+    value="#{nominaB.objService.objEmpl.salario}" required="true">
 
     <f:selectItem itemLabel="Seleccione un salario" itemValue="" />
 
@@ -217,7 +216,7 @@
 
 			<p:outputLabel for="diasT" value="Dias trabajados:" />
 
-			<p:inputText type="number" id="diasT" min="1" max="30"	
+			<p:inputText  type="number" id="diasT" min="1" max="30"	
 			value="#{nominaB.objService.objEmpl.diasTrabajados}" required="true"
 						requiredMessage="Dias trabajados de 1 a 30"/>
 

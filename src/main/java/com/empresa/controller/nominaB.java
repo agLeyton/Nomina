@@ -21,6 +21,11 @@ public class nominaB  implements Serializable{
 	private List<Map<String, Object>> registros = new ArrayList<>();
 
 	
+	
+	
+	
+	
+	
 	public Service getObjService() {
 		return objService;
 	}
@@ -35,10 +40,19 @@ public class nominaB  implements Serializable{
 	public void setRegistros(List<Map<String, Object>> registros) {
 		this.registros = registros;
 	}
+	
+	
+	
 	public void cargar() {
         try {
             registros = JSON.leerDatos();
+            
+            
+            
+            
             System.out.println("Se cargaron " + registros.size() + " registros desde el JSON");
+       
+        
         } catch (IOException e) {
             e.printStackTrace();
         }

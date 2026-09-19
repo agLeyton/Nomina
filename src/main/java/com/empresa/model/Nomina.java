@@ -6,8 +6,6 @@ public class Nomina {
 
 	public double auxTransporte;
 	public  double dctoSalud;
-	public double dcto;
-
 	public double salarioDeve;
 	public double pension;
 	public double netoPagar;
@@ -20,12 +18,11 @@ public class Nomina {
 		super();
 	}
 
-	public Nomina(double auxTransporte, double dctoSalud, double dcto, double salarioDeve, double pension,
+	public Nomina(double auxTransporte, double dctoSalud, double salarioDeve, double pension,
 			double netoPagar) {
 		super();
 		this.auxTransporte = auxTransporte;
 		this.dctoSalud = dctoSalud;
-		this.dcto = dcto;
 		this.salarioDeve = salarioDeve;
 		this.pension = pension;
 		this.netoPagar = netoPagar;
@@ -64,13 +61,7 @@ public class Nomina {
 		this.dctoSalud = dctoSalud;
 	}
 
-	public double getDcto() {
-		return dcto;
-	}
-
-	public void setDcto(double dcto) {
-		this.dcto = dcto;
-	}
+	
 
 
 	public double getNetoPagar() {

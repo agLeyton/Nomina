@@ -13,6 +13,7 @@ import com.fasterxml.jackson.databind.DatabindException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class JSON {
+	
 
 	public static ObjectMapper mapeador = new ObjectMapper();
 
@@ -20,9 +21,10 @@ public class JSON {
 
 	static File archivo = new File(ruta);
 	
+	
+	
 
-	public static <T> void cargarDatos(List<T> obje) throws StreamWriteException, DatabindException, IOException {
-
+	public static <T> void cargarDatos(List<T> obje) throws IOException {
 		String json = mapeador.writerWithDefaultPrettyPrinter().writeValueAsString(obje);
 	
 		System.out.println(json);
@@ -34,8 +36,6 @@ public class JSON {
 	
 	public static List<Map<String, Object>> leerDatos() throws StreamReadException, DatabindException, IOException {
 
-
-	   
 	    if (!archivo.exists()) {
 	        System.out.println("El archivo no existe: " + archivo.getAbsolutePath());
 	        return new ArrayList<>();

@@ -17,19 +17,18 @@ import jakarta.faces.application.FacesMessage;
 import jakarta.faces.context.FacesContext;
 
 public class Service {
-	
+
 	public Empleado objEmpl ; 
-	public Nomina objNomina ;
 	public   Nomina nuevaNomina;
 	public ArrayList<Empleado> listEmpl= new ArrayList<Empleado>();
-	ArrayList<Nomina>listNomina = new ArrayList<Nomina>();
+	public ArrayList<Nomina>listNomina = new ArrayList<Nomina>();
 	
 	
 
 	public Service() {
 		super();
 		objEmpl = new Empleado();
-		objNomina =  new Nomina();
+		
 	}
 
 	
@@ -42,38 +41,19 @@ public class Service {
 	public void setObjEmpl(Empleado objEmpl) {
 		this.objEmpl = objEmpl;
 	}
-	public Nomina getObjNomina() {
-		return objNomina;
-	}
-	public void setObjNomina(Nomina objNomina) {
-		this.objNomina = objNomina;
-	}
+
 	
 	public ArrayList<Empleado> getListEmpl() {
 		return listEmpl;
 	}
 
-
-
-
-
-
-
 	public Nomina getNuevaNomina() {
 		return nuevaNomina;
 	}
 
-
-
 	public void setNuevaNomina(Nomina nuevaNomina) {
 		this.nuevaNomina = nuevaNomina;
 	}
-
-
-
-
-
-
 
 	public void setListEmpl(ArrayList<Empleado> listEmpl) {
 		this.listEmpl = listEmpl;
@@ -139,7 +119,7 @@ public class Service {
 		        - nuevaNomina.getPension()
 		        + nuevaNomina.getAuxTransporte()
 		    );
-		    
+		    //	Sirve para indicar que la nomina ya se saco y se muestra en el index
 		  	 FacesContext.getCurrentInstance().addMessage(
 	    		        null,
 	    		        new FacesMessage(
@@ -153,7 +133,7 @@ public class Service {
 	    	
 	    
 	    }else {
-	    	
+	    	//Indica al index que ya hay un Id registrado asi
 	    	   FacesContext.getCurrentInstance().addMessage(null,
 	                   new FacesMessage(
 	                       FacesMessage.SEVERITY_ERROR,
@@ -195,10 +175,10 @@ public class Service {
 		
 		for (Map<String, Object> registro : registros) {
 
-		    // Extraer el sub-mapa "empleado"
+		  
 		    Map<String, Object> empleado = (Map<String, Object>) registro.get("empleado");
 
-		    // Extraer el sub-mapa "nomina"
+		    
 		    Map<String, Object> nomina = (Map<String, Object>) registro.get("nomina");
 		}
 		
